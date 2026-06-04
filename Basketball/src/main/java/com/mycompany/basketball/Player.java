@@ -11,12 +11,14 @@ package com.mycompany.basketball;
 public class Player {
     double altura;
     String nombre;
-    String position;
+    String posicion;
+    int nivel = (int)(Math.random() * 101); // agregar numero de mas por que Math.random() no incluye 1.0 (de 0 al 9)
+    
 
-    public Player(double altura, String nombre, String position) {
+    public Player(double altura, String nombre, String posicion) {
         this.altura = altura;
         this.nombre = nombre;
-        this.position = position;
+        this.posicion = posicion;
     }
 
     public double getAltura() {
@@ -35,12 +37,12 @@ public class Player {
         this.nombre = nombre;
     }
 
-    public String getPosition() {
-        return position;
+    public String getPosicion() {
+        return posicion;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setPosition(String posicion) {
+        this.posicion = posicion;
     }
     
     

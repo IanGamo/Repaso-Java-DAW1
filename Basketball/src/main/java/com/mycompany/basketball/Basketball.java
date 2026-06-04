@@ -87,17 +87,15 @@ public class Basketball {
         Balon balon1 = new Balon(7, "Molten");
 
         // FUNCION TIRADOR RANDOM
-        
         // Usa Math.random() para escoger un numero del 0.0 al 1.0 (Sin contar el 1.0), saliendo decimal
         // Lo multiplica con la cantidad de jugadores en un equipo usando el size, en mi caso puede salir del 0 al 4
         // Con int nos aseguramos de que salga decimal y guardamos en variable
-        
         int guardarTirador1 = (int) (Math.random() * equipo1.jugadores.size());
         Player jugadorRandom1 = equipo1.jugadores.get(guardarTirador1);
 
         System.out.println(jugadorRandom1.getNombre() + " tira!");
         boolean resultado1 = jugadorRandom1.encestar(balon);
-        
+
         int guardarTirador2 = (int) (Math.random() * equipo2.jugadores.size());
         Player jugadorRandom2 = equipo2.jugadores.get(guardarTirador2);
 
@@ -116,7 +114,13 @@ public class Basketball {
         } else {
             System.out.println("Empate");
         }
+
+        System.out.println("NIVEL DE JUGADOR");
+        System.out.println(jugadorRandom1.getNombre() + " tiene nivel: " + jug1.nivel);
+        
+        
         return true;
+
     }
 
     // tapones
