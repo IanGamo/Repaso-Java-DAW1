@@ -12,7 +12,10 @@ import java.util.ArrayList;
  */
 public class Equipo {
 
-    ArrayList<Player> jugadores = new ArrayList<>();
+    String nombre;
+    
+    
+    static ArrayList<Player> jugadores = new ArrayList<>();
 
     public int comprobarAltos() {
         int contador = 0;
@@ -22,5 +25,9 @@ public class Equipo {
             }
         }
         return contador;
+    }
+
+    double size(ArrayList<Player> jugadores) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

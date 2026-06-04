@@ -11,16 +11,20 @@ import java.util.ArrayList;
  */
 public class Basketball {
 
+    static ArrayList<Player> jugadores = new ArrayList<>();
+    static Equipo equipo1 = new Equipo();
+    static Equipo equipo2 = new Equipo();
+
     public static void main(String[] args) {
         System.out.println("Hello World!");
 
-        Equipos();
+        Inserts();
         resultados();
         probarTapon();
-        
+
     }
 
-    public static void Equipos() {
+    public static void Inserts() {
         // CREACION JUGADORES
         Player jug1 = new Player(175.00, "Gorka", "Alero");
         Player jug2 = new Player(180.00, "Ian", "Ala-Pivot");
@@ -38,9 +42,6 @@ public class Basketball {
         Balon balon1 = new Balon(7, "Molten");
 
         // CREACION EQUIPOS
-        Equipo equipo1 = new Equipo();
-        Equipo equipo2 = new Equipo();
-
         // METER JUGADORES DENTRO DE CADA EQUIPO
         equipo1.jugadores.add(jug1);
         equipo1.jugadores.add(jug2);
@@ -61,29 +62,20 @@ public class Basketball {
         // PRINTARLOS        
         System.out.println("JUGADORES ALTOS TOTAL CADA EQUIPO");
         System.out.println("Equipo 1");
-        System.out.println(altosEquipo1);
-        System.out.println("Equipo 2");
-        System.out.println(altosEquipo2);
-        
-        // pintar stats
         mostrarStats(equipo1);
+        System.out.println("Equipo 2");
         mostrarStats(equipo2);
-        
-        
-        
+        // pintar stats
+
     }
-    
-    public static void mostrarStats(Equipo equipo){
-        
+
+    public static void mostrarStats(Equipo equipo) {
+
         int altos = equipo.comprobarAltos();
-        
+
         System.out.println(altos);
-        
+
     }
-    
-    
-    
-    
 
     // resultado del juego
     public static boolean resultados() {
@@ -94,16 +86,33 @@ public class Basketball {
         Balon balon = new Balon(6, "Spalding");
         Balon balon1 = new Balon(7, "Molten");
 
-        System.out.println("Jugador 1 tira");
-        boolean resultado1 = jug1.encestar(balon);
-        System.out.println("Jugador 2 tira");
-        boolean resultado2 = jug2.encestar(balon1);
+        // FUNCION TIRADOR RANDOM
+        
+        // Usa Math.random() para escoger un numero del 0.0 al 1.0 (Sin contar el 1.0), saliendo decimal
+        // Lo multiplica con la cantidad de jugadores en un equipo usando el size, en mi caso puede salir del 0 al 4
+        // Con int nos aseguramos de que salga decimal y guardamos en variable
+        
+        int guardarTirador1 = (int) (Math.random() * equipo1.jugadores.size());
+        Player jugadorRandom1 = equipo1.jugadores.get(guardarTirador1);
 
+        System.out.println(jugadorRandom1.getNombre() + " tira!");
+        boolean resultado1 = jugadorRandom1.encestar(balon);
+        
+        int guardarTirador2 = (int) (Math.random() * equipo2.jugadores.size());
+        Player jugadorRandom2 = equipo2.jugadores.get(guardarTirador2);
+
+        System.out.println(jugadorRandom2.getNombre() + " tira!");
+        boolean resultado2 = jugadorRandom2.encestar(balon1);
+
+//        for (Player players : jugadores) {
+//            String jugador = players.getNombre();
+//            System.out.println(jugador);
+//        }
         System.out.println("Quien gana?");
         if (resultado1 == true && resultado2 == false) {
-            System.out.println("Jugador 1 gana");
+            System.out.println(jug1.getNombre());
         } else if (resultado2 == true && resultado1 == false) {
-            System.out.println("Jugador 2 gana");
+            System.out.println(jug2.getNombre());
         } else {
             System.out.println("Empate");
         }
